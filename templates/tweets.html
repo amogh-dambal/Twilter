@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twilter</title>
+</head>
+<body>
+    </div>
+        {% for tweet in tweets %}
+            <div class="card mt-2">
+                <div class="card-body">
+                    <div class="card-text">
+                        {{ tweet._json.text }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
