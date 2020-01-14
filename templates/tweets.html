@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Twilter</title>
+
+    <!-- source javascript -->
+    <script type="text/javascript" src="{{ url_for('static', filename='basic.js') }}"></script>
 </head>
 <body>
     </div>
-        {% for tweet in tweets %}
+        {% for tweet in emb %}
             <div class="card mt-2">
                 <div class="card-body">
                     <div class="card-text">
-                        {{ tweet._json.text }}
+                        {{ tweet.html | safe }}
                     </div>
                 </div>
             </div>
