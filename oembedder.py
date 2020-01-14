@@ -2,7 +2,6 @@
 # tool to handle making GET requests to Twitter API
 # for oembed compatible data
 import requests
-import pprint
 
 
 def get_oembed(tweet):
@@ -16,11 +15,9 @@ def get_oembed(tweet):
 	# api access point
 	endpoint = "https://publish.twitter.com/oembed"
 
-	# screen name
+	# build tweet url
 	screen_name = tweet.json['user']['screen_name']
-	# id_str
 	id_str = tweet.json['id_str']
-	# build url of tweet
 	url = f"http://twitter.com/{screen_name}/status/{id_str}"
 
 	params = {

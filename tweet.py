@@ -1,3 +1,7 @@
+# python 3.6
+# utility class to handle
+# the logic of dealing with tweets
+# instead of status objects
 import copy
 
 
