@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 
-from filter import authenticate, to_json, is_retweet
+from filter import authenticate
+from tweet import Tweet
 
 app = Flask(__name__)
 
@@ -18,12 +19,13 @@ def parse():
 	api = authenticate()
 
 	if api is not None:
-		fetched_tweets = api.user_timeline(id=user, count=count)
-		fetched_tweets.sort(key=lambda t: to_json(t)['favorite_count'], reverse=True)
-		fetched_tweets = [t for t in fetched_tweets if not is_retweet(t)]
+		fetched_tweets = [Tweet(t) for t in api.user_timeline(id=user, count=count)]
+		fetched_tweets.sort(key=lambda t: t.likes, reverse=True)
+		fetched_tweets = [tweet for tweet in fetched_tweets if not tweet.is_retweet]
 	else:
-		fetched_tweets = []
+		fetched_tweets = None
 
+	
 	return render_template('tweets.html', tweets=fetched_tweets)
 
 

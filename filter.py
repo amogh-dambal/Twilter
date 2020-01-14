@@ -1,4 +1,5 @@
-import json, tweepy, pprint, copy, argparse
+import json
+import tweepy
 
 
 # set authentication and load tweepy API
@@ -22,15 +23,6 @@ def authenticate(credfile='twitter_creds.json'):
 	except KeyError as ke:
 		print("Error: could not authenticate." + str(ke))
 		return None
-
-
-def is_retweet(tweet):
-	return 'retweeted_status' in tweet._json
-
-
-def to_json(tweet):
-	return copy.deepcopy(tweet._json)
-
 
 
 
