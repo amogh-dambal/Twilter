@@ -25,8 +25,10 @@ def parse():
 	else:
 		fetched_tweets = None
 
-	
-	return render_template('tweets.html', tweets=fetched_tweets)
+	if fetched_tweets is None:
+		return render_template('error.html')
+	else:
+		return render_template('tweets.html', tweets=fetched_tweets)
 
 
 if __name__ == '__main__':
